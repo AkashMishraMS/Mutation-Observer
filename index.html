@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <ul class="plplist">
+        <li>Card 1</li>
+        <li>Card 2</li>
+        <li>Card 3</li>
+        <li>Card 4</li>
+    </ul>
+</body>
+
+<script>
+
+    
+
+// let myList = $('.plplist')
+// console.log('myList', myList)
+
+
+// const observer = new MutationObserver(mutation => {
+//     console.log('mutation', mutation)
+
+//     mutation.forEach(i => {
+//         console.log('i',i)
+
+//         // if(i.type === 'attributes') {
+//         //     const changedAtrributeName = i.atrributeName;
+//         //     const newValue = i.target.getAttribute(changedAtrributeName)
+
+//         //     console.log(`changed value of ${changedAtrributeName} : ${newValue}`)
+//         // }
+
+
+//         // if(i.addedNodes.length > 0 ){
+//         //     console.log('no of records are added', i.addedNodes.length)
+           
+//         // }
+
+//         // if(i.removedNodes.length > 0 ){
+//         //     console.log('no of records are added', i.removedNodes.length)
+           
+//         // }
+
+
+//         // changes in text
+//         // if(i.addedNodes.length === 1 && i.addedNodes[0].nodeType == Node.TEXT_NODE 
+//         // && i.removedNodes.length === 1 && i.removedNodes[0].nodeType === Node.TEXT_NODE
+//         // ) {
+//         //     console.log(`text Change from ${i.removedNodes[0].nodeValue} to ${i.addedNodes[0].nodeValue}`)
+//         // }
+
+//         // console.log('text is changed ', i.target.nodeValue, 'old value is', i.oldValue)
+//     })
+// })
+ 
+// observer.observe(myList, {
+//      attributes:true,
+//     // attributeFilter:['class'],
+//     // attributeOldValue:true,
+
+//     // childList:true 
+
+//     // characterData: true,
+//     // characterDataOldValue: true
+
+//     subtree:true
+// })
+
+// setTimeout(()=>{
+// $(myList).append('<p>TestCard</p>')
+// }, 3000)
+// 
+const myList = document.querySelector('.plplist')
+
+/* Mutation Observer
+    1. Making a new MutationObserver Object.
+    2.Tell it What to observ.
+    3.What to do with the observed changes/mutation.
+*/
+
+const observer = new MutationObserver(mutation => {
+    console.log('mutation', mutation)
+
+    mutation.forEach(i => {
+        console.log('i',i)
+
+        // if(i.type === 'attributes') {
+        //     const changedAtrributeName = i.atrributeName;
+        //     const newValue = i.target.getAttribute(changedAtrributeName)
+
+        //     console.log(`changed value of ${changedAtrributeName} : ${newValue}`)
+        // }
+
+
+        // if(i.addedNodes.length > 0 ){
+        //     console.log('no of records are added', i.addedNodes.length)
+           
+        // }
+
+        // if(i.removedNodes.length > 0 ){
+        //     console.log('no of records are added', i.removedNodes.length)
+           
+        // }
+
+
+        // changes in text
+        // if(i.addedNodes.length === 1 && i.addedNodes[0].nodeType == Node.TEXT_NODE 
+        // && i.removedNodes.length === 1 && i.removedNodes[0].nodeType === Node.TEXT_NODE
+        // ) {
+        //     console.log(`text Change from ${i.removedNodes[0].nodeValue} to ${i.addedNodes[0].nodeValue}`)
+        // }
+
+        // console.log('text is changed ', i.target.nodeValue, 'old value is', i.oldValue)
+    })
+})
+
+observer.observe(myList, {
+     attributes:true,
+     attributeFilter:['class'],
+     attributeOldValue:true,
+     childList:true,
+     characterData: true,
+     characterDataOldValue: true,
+     subtree:true
+})
+
+// observer.disconnect()
+
+//made change in dom
+setTimeout(() => {
+// myList.setAttribute('id', 'plpList')
+// myList.setAttribute('class', 'plpClass')
+
+// myList.removeChild(myList.firstElementChild)
+
+// const Li = document.createElement('li')
+// Li.textContent = 'hey how are you'
+// myList.appendChild(Li)
+
+//changes in text
+// myList.firstElementChild.textContent = 'something else';
+// myList.firstElementChild.innerHTML = 'and something else';
+
+// not work
+// myList.firstElementChild.innerHTML = '<br>and something else';
+
+
+// myList.firstElementChild.firstChild.nodeValue = 'text are add on text node and changed';
+// myList.setAttribute('id', 'plpList')
+// myList.firstElementChild.setAttribute('id', 'experienceID')
+$(myList).attr('id', 'pid')
+$(myList).children().first().attr('id', 'experienceID')
+$(myList).append('<p>Test</p>')
+$(myList).addClass('.changeLayout')
+$('.plpList').text('Demo')
+
+}, 2000)
+
+
+</script>
+</html>
